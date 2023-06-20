@@ -15,6 +15,9 @@ function sleep( ms ) {
 
 async function generatePng(dockerComposePath, configFile, outputFile, chromePath) {
     const reactServer = spawn('yarn', ['serve'], {detached: true});
+    reactServer.stdout.on((data) => {
+        console.log('Server:', data);
+    })
     await sleep( 1000 );
     
     if (configFile === undefined || outputFile === undefined) {
@@ -44,11 +47,6 @@ async function generatePng(dockerComposePath, configFile, outputFile, chromePath
     const page = await browser.newPage();
 
     //go to target website 
-    await page.goto( 'http://localhost:47312/' + base64EncodedExcalidrawJson, {
-        //wait for content to load 
-        waitUntil: 'networkidle0',
-    } );
-
     await page.goto( 'http://localhost:47312/' + base64EncodedExcalidrawJson, {
         //wait for content to load 
         waitUntil: 'networkidle0',
