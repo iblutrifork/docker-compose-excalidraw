@@ -7,7 +7,6 @@ const run = async function() {
     const dockerComposePath = core.getInput( 'docker-compose-directory' );
     const configFile = core.getInput( 'input-file' );
     const outputFile = core.getInput( 'output-file' );
-    // spawn( 'node', ['node_modules/puppeteer/install.js'] );
     await generatePng( dockerComposePath, configFile, outputFile );
     console.log( 'Success' );
 }

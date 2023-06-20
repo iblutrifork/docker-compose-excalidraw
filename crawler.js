@@ -15,7 +15,7 @@ function sleep( ms ) {
 
 async function generatePng(dockerComposePath, configFile, outputFile) {
     const reactServer = spawn('yarn', ['serve'], {detached: true});
-    await sleep( 1500 );
+    await sleep( 10000 );
     
     if (configFile === undefined || outputFile === undefined) {
         console.log('Usage:')
