@@ -8,7 +8,6 @@ const run = async function() {
     const configFile = core.getInput( 'input-file' );
     const outputFile = core.getInput( 'output-file' );
     // spawn( 'node', ['node_modules/puppeteer/install.js'] );
-    spawn( 'yarn', ['install'] );
     await generatePng( dockerComposePath, configFile, outputFile );
     console.log( 'Success' );
 }

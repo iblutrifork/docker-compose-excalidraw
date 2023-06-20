@@ -38,7 +38,7 @@ async function generatePng(dockerComposePath, configFile, outputFile) {
     const base64EncodedExcalidrawJson = Buffer.from(out).toString('base64');
 
     //initiate the browser 
-    const browser = await puppeteer.launch({headless: "new"});
+    const browser = await puppeteer.launch( {headless: "new", executablePath: '/opt/hostedtoolcache/chromium/latest/x64/chrome'});
 
     //create a new in headless chrome 
     const page = await browser.newPage();
