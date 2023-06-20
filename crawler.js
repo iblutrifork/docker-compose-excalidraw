@@ -4,7 +4,6 @@ const jsdom = require( "jsdom" );
 const {JSDOM} = jsdom;
 const util = require( 'util' );
 const exec = util.promisify( require( 'child_process' ).exec );
-const args = require( 'yargs' ).argv;
 const spawn = require('child_process').spawn;
 const path = require('path');
 
@@ -14,13 +13,10 @@ function sleep( ms ) {
     } );
 }
 
-( async () => {
-    const reactServer = spawn('npm', ['run', 'serve'], {detached: true});
+async function generatePng(dockerComposePath, configFile, outputFile) {
+    const reactServer = spawn('yarn', ['serve'], {detached: true});
     await sleep( 1500 );
     
-    const dockerComposePath = args['docker-compose-path'];
-    const configFile = args['file'];
-    const outputFile = args['out'];
     if (configFile === undefined || outputFile === undefined) {
         console.log('Usage:')
         console.log('--docker-compose-path=<path to docker compose files>')
@@ -66,4 +62,8 @@ function sleep( ms ) {
     await browser.close();
     //shut down excalidraw react server
     reactServer.kill();
-} )();
+}
+
+module.exports = {
+    generatePng: generatePng,
+}
