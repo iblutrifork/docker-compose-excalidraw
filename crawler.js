@@ -15,7 +15,7 @@ function sleep( ms ) {
 }
 
 ( async () => {
-    const reactServer = spawn('yarn', ['serve'], {detached: true});
+    const reactServer = spawn('npm', ['run', 'serve'], {detached: true});
     await sleep( 1500 );
     
     const dockerComposePath = args['docker-compose-path'];

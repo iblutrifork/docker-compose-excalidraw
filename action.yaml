@@ -1,0 +1,19 @@
+name: 'Docker compose to png diagram via Excalidraw'
+description: 'Convert a docker compose config to a png diagram using Excalidraw'
+inputs:
+  docker-compose-directory:
+    description: 'Where is the docker-compose config file'
+    required: true
+    default: './docker-compose'
+  input-file:
+    description: 'What is the docker-compose filename'
+    required: true
+    default: 'docker-compose.yaml'
+  output-file:
+    description: 'What is the docker-compose filename'
+    required: true
+    default: 'docker-compose.yaml'
+# outputs:
+runs:
+  using: 'node16'
+  main: 'index.js'
