@@ -16,7 +16,7 @@ function sleep( ms ) {
 async function generatePng(dockerComposePath, configFile, outputFile, chromePath) {
     const reactServer = spawn('yarn', ['serve'], {detached: true});
     reactServer.stdout.on( 'data', ( data ) => {
-        console.log( data );
+        console.log( data.toString() );
     } );
     await sleep( 1000 );
     
