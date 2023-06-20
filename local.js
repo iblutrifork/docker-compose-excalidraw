@@ -5,5 +5,5 @@ const args = require( 'yargs' ).argv;
     const dockerComposePath = args['docker-compose-path'];
     const configFile = args['file'];
     const outputFile = args['out'];
-    generatePng(dockerComposePath, configFile, outputFile);
+    generatePng(dockerComposePath, configFile, outputFile, undefined);
 } )();

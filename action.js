@@ -7,7 +7,7 @@ const run = async function() {
     const dockerComposePath = core.getInput( 'docker-compose-directory' );
     const configFile = core.getInput( 'input-file' );
     const outputFile = core.getInput( 'output-file' );
-    await generatePng( dockerComposePath, configFile, outputFile );
+    await generatePng( dockerComposePath, configFile, outputFile, '/opt/hostedtoolcache/chromium/latest/x64/chrome' );
     console.log( 'Success' );
 }
 

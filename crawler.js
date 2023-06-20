@@ -13,7 +13,7 @@ function sleep( ms ) {
     } );
 }
 
-async function generatePng(dockerComposePath, configFile, outputFile) {
+async function generatePng(dockerComposePath, configFile, outputFile, chromePath) {
     const reactServer = spawn('yarn', ['serve'], {detached: true});
     await sleep( 2000 );
     
@@ -37,8 +37,8 @@ async function generatePng(dockerComposePath, configFile, outputFile) {
     }
     const base64EncodedExcalidrawJson = Buffer.from(out).toString('base64');
 
-    //initiate the browser 
-    const browser = await puppeteer.launch( {headless: "new"});
+    //initiate the browser, path in CI is /opt/hostedtoolcache/chromium/latest/x64/chrome
+    const browser = await puppeteer.launch( {headless: "new", executablePath: chromePath});
 
     //create a new in headless chrome 
     const page = await browser.newPage();
