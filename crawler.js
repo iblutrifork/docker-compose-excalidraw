@@ -18,7 +18,7 @@ async function generatePng(dockerComposePath, configFile, outputFile, chromePath
     reactServer.stdout.on( 'data', ( data ) => {
         console.log( 'server>', data.toString() );
     } );
-    await sleep( 10000 );
+    await sleep( 50000 );
     
     if (configFile === undefined || outputFile === undefined) {
         console.log('Usage:')
